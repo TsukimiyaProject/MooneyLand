@@ -1,0 +1,4 @@
+### gradle+idea template
+/.gradle/
+/.idea/
+/build/
