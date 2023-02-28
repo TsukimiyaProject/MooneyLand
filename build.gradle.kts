@@ -73,6 +73,7 @@ bukkit {
                 "tsukimiya.mooney.land.buy",
                 "tsukimiya.mooney.land.sell",
                 "tsukimiya.mooney.land.invite",
+                "tsukimiya.mooney.land.kick",
                 "tsukimiya.mooney.land.give",
                 "tsukimiya.mooney.land.here",
                 "tsukimiya.mooney.land.list",
@@ -96,6 +97,9 @@ bukkit {
             default = BukkitPluginDescription.Permission.Default.TRUE
         }
         register("tsukimiya.mooney.land.invite") {
+            default = BukkitPluginDescription.Permission.Default.TRUE
+        }
+        register("tsukimiya.mooney.land.kick") {
             default = BukkitPluginDescription.Permission.Default.TRUE
         }
         register("tsukimiya.mooney.land.give") {
