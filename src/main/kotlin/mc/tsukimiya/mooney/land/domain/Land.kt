@@ -9,14 +9,18 @@ class Land(val landId: LandId, val coordinate: Coordinate, owner: UUID, invitees
     fun changeOwner(newOwner: UUID) {
         owner = newOwner
 
-        invitees = invitees.toMutableList().apply {
-            remove(newOwner)
-        }
+        deleteInvitee(newOwner)
     }
 
     fun addInvitee(invitee: UUID) {
         invitees = invitees.toMutableList().apply {
             add(invitee)
+        }
+    }
+
+    fun deleteInvitee(invitee: UUID) {
+        invitees = invitees.toMutableList().apply {
+            remove(invitee)
         }
     }
 }
