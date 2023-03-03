@@ -1,6 +1,6 @@
 package mc.tsukimiya.mooney.land.domain
 
-data class Coordinate(val minX: Int, val minZ: Int, val maxX: Int, val maxZ: Int) {
+data class Coordinate(val minX: Int, val minZ: Int, val maxX: Int, val maxZ: Int, val world: String) {
     init {
         require(minX <= maxX)
         require(minZ <= maxZ)
