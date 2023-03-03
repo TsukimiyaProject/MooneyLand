@@ -7,7 +7,9 @@ interface LandRepository {
 
     fun exists(id: LandId): Boolean
 
-    fun find(id: LandId): Boolean
+    fun find(id: LandId): Land?
+
+    fun findByCoordinate(x: Int, z: Int, world: String): Land?
 
     fun findByOwner(owner: UUID): Map<UUID, Land>
 
