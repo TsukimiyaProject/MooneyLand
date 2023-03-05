@@ -7,7 +7,7 @@ interface LandRepository {
 
     fun exists(id: LandId): Boolean
 
-    fun existsByCoordinate(coordinate: Coordinate): Boolean
+    fun existsByCoordinate(x: Int, z: Int, world: String): Boolean
 
     fun find(id: LandId): Land?
 
