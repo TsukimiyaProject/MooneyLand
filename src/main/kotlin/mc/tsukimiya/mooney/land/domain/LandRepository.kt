@@ -9,6 +9,8 @@ interface LandRepository {
 
     fun existsByCoordinate(x: Int, z: Int, world: String): Boolean
 
+    fun existsOverlapLand(coordinate: Coordinate): Boolean
+
     fun find(id: LandId): Land?
 
     fun findByCoordinate(x: Int, z: Int, world: String): Land?
