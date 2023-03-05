@@ -21,7 +21,5 @@ interface LandRepository {
 
     fun store(land: Land)
 
-    fun create(coordinate: Coordinate, owner: UUID)
-
     fun delete(id: LandId)
 }

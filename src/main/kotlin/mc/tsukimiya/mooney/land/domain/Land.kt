@@ -1,8 +1,11 @@
 package mc.tsukimiya.mooney.land.domain
 
+import mc.tsukimiya.mooney.land.domain.exception.LandNoIdException
 import java.util.*
 
-class Land(val landId: LandId, val coordinate: Coordinate, owner: UUID, invitees: List<UUID>) {
+class Land(landId: LandId?, val coordinate: Coordinate, owner: UUID, invitees: List<UUID>) {
+    val landId = landId
+        get() = field ?: throw LandNoIdException()
     var owner = owner; private set
     var invitees = invitees; private set
 
