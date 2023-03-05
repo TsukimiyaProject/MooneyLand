@@ -6,10 +6,10 @@ import kotlin.math.min
 
 data class Area(val minCoord: Coordinate, val maxCoord: Coordinate) {
     companion object {
-        fun create(coord1: Coordinate, coord2: Coordinate): Area {
+        fun create(x1: Int, x2: Int, z1: Int, z2: Int, world: String): Area {
             return Area(
-                Coordinate(min(coord1.x, coord2.x), min(coord1.z, coord2.z), coord1.world),
-                Coordinate(max(coord1.x, coord2.x), max(coord1.z, coord2.z), coord2.world),
+                Coordinate(min(x1, x2), min(z1, z2), world),
+                Coordinate(max(x1, x2), max(x1, x2), world)
             )
         }
     }
