@@ -1,7 +1,7 @@
 package mc.tsukimiya.mooney.land.domain.exception
 
-import mc.tsukimiya.mooney.land.domain.Coordinate
+import mc.tsukimiya.mooney.land.domain.Area
 
-class InvalidCoordinateException(coordinate: Coordinate) :
-    RuntimeException("minX = ${coordinate.minX}, minZ = ${coordinate.minZ}, maxX = ${coordinate.maxX}, maxZ = ${coordinate.maxZ}") {
+class InvalidCoordinateException(area: Area) :
+    RuntimeException("[${area.minCoord.x}, ${area.minCoord.z}, ${area.minCoord.world}], [${area.maxCoord.x}, ${area.maxCoord.z}, ${area.maxCoord.world}]") {
 }
