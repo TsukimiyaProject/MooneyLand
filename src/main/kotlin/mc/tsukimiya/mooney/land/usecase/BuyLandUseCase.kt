@@ -4,7 +4,6 @@ import mc.tsukimiya.mooney.core.domain.Money
 import mc.tsukimiya.mooney.core.domain.WalletRepository
 import mc.tsukimiya.mooney.core.exception.WalletNotFoundException
 import mc.tsukimiya.mooney.land.domain.Area
-import mc.tsukimiya.mooney.land.domain.Coordinate
 import mc.tsukimiya.mooney.land.domain.Land
 import mc.tsukimiya.mooney.land.domain.LandRepository
 import mc.tsukimiya.mooney.land.domain.exception.LandOverlapException
