@@ -12,6 +12,13 @@ data class Area(val minCoord: Coordinate, val maxCoord: Coordinate) {
                 Coordinate(max(x1, x2), max(x1, x2), world)
             )
         }
+
+        fun create(coord1: Coordinate, coord2: Coordinate): Area {
+            return Area(
+                Coordinate(min(coord1.x, coord2.x), min(coord1.z, coord2.z), coord1.world),
+                Coordinate(max(coord1.x, coord2.x), max(coord1.z, coord2.z), coord2.world),
+            )
+        }
     }
 
     init {
