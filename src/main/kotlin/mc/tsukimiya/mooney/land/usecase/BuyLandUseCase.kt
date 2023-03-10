@@ -6,14 +6,24 @@ import mc.tsukimiya.mooney.core.exception.WalletNotFoundException
 import mc.tsukimiya.mooney.land.domain.Area
 import mc.tsukimiya.mooney.land.domain.Land
 import mc.tsukimiya.mooney.land.domain.LandRepository
+import mc.tsukimiya.mooney.land.domain.SelectedCoordinateRepository
 import mc.tsukimiya.mooney.land.domain.exception.LandOverlapException
+import mc.tsukimiya.mooney.land.domain.exception.SelectedCoordNotFoundException
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.util.*
 
-class BuyLandUseCase(private val landRepository: LandRepository, private val walletRepository: WalletRepository) {
-    fun execute(x1: Int, x2: Int, z1: Int, z2: Int, world: String, owner: UUID, perArea: Int) {
+class BuyLandUseCase(
+    private val landRepository: LandRepository,
+    private val coordRepository: SelectedCoordinateRepository,
+    private val walletRepository: WalletRepository
+) {
+    fun execute(owner: UUID, perArea: Int) {
         transaction {
-            val area = Area.create(x1, x2, z1, z2, world)
+            val coords = coordRepository.find(owner)
+            val coord1 = coords.first ?: throw SelectedCoordNotFoundException()
+            val coord2 = coords.second ?: throw SelectedCoordNotFoundException()
+
+            val area = Area.create(coord1, coord2)
             if (landRepository.existsOverlapLand(area)) {
                 throw LandOverlapException()
             }
