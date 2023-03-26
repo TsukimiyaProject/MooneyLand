@@ -1,5 +1,6 @@
 package mc.tsukimiya.mooney.land.usecase
 
+import mc.tsukimiya.mooney.land.domain.Coordinate
 import mc.tsukimiya.mooney.land.domain.Land
 import mc.tsukimiya.mooney.land.domain.LandId
 import mc.tsukimiya.mooney.land.domain.LandRepository
@@ -9,7 +10,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class FindLandUseCase(private val repository: LandRepository) {
     fun execute(x: Int, z: Int, world: String): Land {
         return transaction {
-            return@transaction repository.findByCoordinate(x, z, world) ?: throw LandNotFoundException(0)
+            return@transaction repository.findByCoordinate(Coordinate(x, z, world)) ?: throw LandNotFoundException(0)
         }
     }
 
