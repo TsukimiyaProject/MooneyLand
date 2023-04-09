@@ -52,4 +52,14 @@ data class Area(val minCoord: Coordinate, val maxCoord: Coordinate) {
     fun calcBlocks(): Int {
         return (maxCoord.x - minCoord.x + 1) * (maxCoord.z - minCoord.z + 1)
     }
+
+    /**
+     * coordinateがこのArea内であるか
+     *
+     * @param coordinate
+     * @return
+     */
+    fun containsCoord(coordinate: Coordinate): Boolean {
+        return (coordinate.x in minCoord.x..maxCoord.x) && (coordinate.z in minCoord.z..maxCoord.z)
+    }
 }
