@@ -64,8 +64,10 @@ data class Area(val minCoord: Coordinate, val maxCoord: Coordinate) {
     }
 
     fun isIntersectsWith(other: Area): Boolean {
-        if (other.maxCoord.x > minCoord.x && maxCoord.x > other.minCoord.x) {
-            return other.maxCoord.z > minCoord.z && maxCoord.z > other.minCoord.z
+        if (getWorld() == other.getWorld()) {
+            if (other.maxCoord.x > minCoord.x && maxCoord.x > other.minCoord.x) {
+                return other.maxCoord.z > minCoord.z && maxCoord.z > other.minCoord.z
+            }
         }
 
         return false
