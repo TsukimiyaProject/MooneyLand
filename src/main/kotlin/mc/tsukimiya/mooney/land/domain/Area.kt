@@ -62,4 +62,12 @@ data class Area(val minCoord: Coordinate, val maxCoord: Coordinate) {
     fun containsCoord(coordinate: Coordinate): Boolean {
         return (coordinate.x in minCoord.x..maxCoord.x) && (coordinate.z in minCoord.z..maxCoord.z)
     }
+
+    fun isIntersectsWith(other: Area): Boolean {
+        if (other.maxCoord.x > minCoord.x && maxCoord.x > other.minCoord.x) {
+            return other.maxCoord.z > minCoord.z && maxCoord.z > other.minCoord.z
+        }
+
+        return false
+    }
 }
