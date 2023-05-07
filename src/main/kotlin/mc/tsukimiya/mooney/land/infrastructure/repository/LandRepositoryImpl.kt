@@ -44,4 +44,44 @@ class LandRepositoryImpl : LandRepository {
             invitee
         )
     }
+
+    override fun findByCoordinate(coordinate: Coordinate): Land? {
+        val land = LandDao.find {
+            (Lands.world eq coordinate.world)
+                .and(Lands.minX greaterEq coordinate.x)
+                .and(Lands.maxX lessEq coordinate.x)
+                .and(Lands.minZ greaterEq coordinate.z)
+                .and(Lands.maxZ lessEq coordinate.z)
+        }.firstOrNull() ?: return null
+        val invitee = mutableListOf<UUID>()
+        land.invitees.forEach {
+            invitee.add(it.invitee)
+        }
+        return Land(
+            LandId(land.id.value),
+            Area(Coordinate(land.minX, land.minZ, land.world), Coordinate(land.maxX, land.maxZ, land.world)),
+            land.owner,
+            invitee
+        )
+    }
+
+    override fun findByOwner(owner: UUID): Map<LandId, Land> {
+        TODO("Not yet implemented")
+    }
+
+    override fun findAll(): Map<LandId, Land> {
+        TODO("Not yet implemented")
+    }
+
+    override fun count(): Long {
+        TODO("Not yet implemented")
+    }
+
+    override fun store(land: Land) {
+        TODO("Not yet implemented")
+    }
+
+    override fun delete(id: LandId) {
+        TODO("Not yet implemented")
+    }
 }
