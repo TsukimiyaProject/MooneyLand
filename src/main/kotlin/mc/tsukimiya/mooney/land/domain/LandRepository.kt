@@ -15,7 +15,7 @@ interface LandRepository {
 
     fun findByCoordinate(coordinate: Coordinate): Land?
 
-    fun findByOwner(owner: UUID): Map<UUID, Land>
+    fun findByOwner(owner: UUID): Map<LandId, Land>
 
     fun findAll(): Map<LandId, Land>
 
